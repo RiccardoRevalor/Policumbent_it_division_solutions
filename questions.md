@@ -27,7 +27,7 @@ int main() {
 }
 ```
 Since both the inner and the outer loops run exactly n times, they determine the time complexity which is O(n^2).
-The last loop, having a lower time complexity (linear), do not influence the overall time complexity of the program.
+The last loop, having a lower time complexity (linear), does not influence the overall time complexity of the program.
 
 ## Question 2
 
