@@ -50,8 +50,11 @@ For example, if I have an abstract class with the abstract method X, in the abst
 abstract class MyAbstractClass{
     abstract void myPrint();
 }
+```
 
 Then I can declare another class, extending the abstract class and implementing the abstract method, like:
+
+```Java
 class myClass extends MyAbstractClass {
 
     @Override
