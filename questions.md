@@ -44,7 +44,7 @@ What is an abstract method in OOP? How is it used?
 It's a method that is declared but not implemented in the class.
 In fact, in OOP paradigm we use abstract classes and interfaces that may contain abstract methods. The idea is to then create child classes implementing the code.
 
-For example, if I have an abstract class with the abstract method X, in the abstract class I can write (Java):
+For example, if I have an abstract class with the abstract method myPrint(), in the abstract class I can write (Java):
 
 ```Java
 abstract class MyAbstractClass{
