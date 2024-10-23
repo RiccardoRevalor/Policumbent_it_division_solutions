@@ -45,6 +45,8 @@ It's a method that is declared but not implemented in the class.
 In fact, in OOP paradigm we use abstract classes and interfaces that may contain abstract methods. The idea is to then create child classes implementing the code.
 
 For example, if I have an abstract class with the abstract method X, in the abstract class I can write (Java):
+
+```Java
 abstract class MyAbstractClass{
     abstract void myPrint();
 }
@@ -57,6 +59,7 @@ class myClass extends MyAbstractClass {
         System.out.println("Hello Policumbent.");
     }
 }
+```
 
 ## Question 4
 
