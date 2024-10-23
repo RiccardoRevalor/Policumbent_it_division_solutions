@@ -67,10 +67,12 @@ class myClass extends MyAbstractClass {
 ## Question 4
 
 How is `systemd` used in most Linux systems?
+
 It's used as the default init system and service manager.
 
 ## Question 5
 
 What is a `git rebase`?
+
 It's a command related to git repositories, which can change the base of a branch from one commit to another one.
 For example, if you use git rebase on a branch created by commit X, after the rebase it looks like the branch was created after commit Y, with X not equal to Y.
