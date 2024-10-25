@@ -15,7 +15,7 @@ static GNSSParser_Data_t GNSSParser_Data;
 
 /* USER CODE BEGIN PV */    //Insert code if necessary
 
-//BONUS QUESTION: Implement a circular queue as an First-Class ADT through
+//BONUS QUESTION: Implement a circular queue as an First-Class ADT 
 //importing queue.h
 #include "queue.h"
 
@@ -92,7 +92,7 @@ void task(void *args){
         value = getValue();
         /* USER CODE BEGIN WHILE */     //Insert code if necessary
 
-        //Assuming a Little Endian representation, the bitwise operation is performed to the LSB down to the MSB
+        //Assuming a Big Endian representation, the bitwise operation is performed to the LSB down to the MSB
         if (value & (1 << 2)) {  // Third bit -> GPGGA
             GNSS_PARSER_ParseMsg(&GNSSParser_Data, GPGGA); //analysis of the message
             GNSS_PARSER_Print(&GNSSParser_Data, GPGGA); //print the message
