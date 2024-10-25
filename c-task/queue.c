@@ -134,7 +134,11 @@ void printQueue(Queue *queue){
     int i = queue->front;
     int count = queue->count;
     for (int j = 0; j < count; j++) {
-        printf("%d ", queue->data[i]);
+        //convert the void* pointer to the corresponding data type
+        //and print it
+        //function to print the data() ...
+
+        //move the pointer
         i = (i + 1) % queue->size;
     }
     printf("\n");
