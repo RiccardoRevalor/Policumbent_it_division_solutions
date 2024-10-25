@@ -11,7 +11,13 @@
 /* Private variables ---------------------------------------------------------*/
 static GNSSParser_Data_t GNSSParser_Data;
 
+
+
 /* USER CODE BEGIN PV */    //Insert code if necessary
+
+//BONUS QUESTION: Implement a circular queue as an First-Class ADT through
+//importing queue.h
+#include "queue.h"
 
 /* USER CODE END PV */
 
@@ -72,6 +78,11 @@ void task(void *args){
         return -1;
     }
 
+    //initialize 3 circular queue of size 10 each for storing GPGGA, GNS and GPRMC messages
+    Queue *GPGGA_queue = createQueue(10);
+    Queue *GNS_queue = createQueue(10);
+    Queue *GPRMC_queue = createQueue(10);
+
     /* Initialization of the Parser*/
 
     /* USER CODE END 2 */
@@ -85,12 +96,30 @@ void task(void *args){
         if (value & (1 << 2)) {  // Third bit -> GPGGA
             GNSS_PARSER_ParseMsg(&GNSSParser_Data, GPGGA); //analysis of the message
             GNSS_PARSER_Print(&GNSSParser_Data, GPGGA); //print the message
+
+            //store the msg in the corresponding queue
+            if (!enqueue(GPGGA_queue, (void *) &GNSSParser_Data.gpgga_data)) {
+                //ERROR: the queue is full
+                printf("ERROR: the GPGGA queue is full\n");
+            }
         } else if (value & (1 << 1)) {  // Second bit -> GNS
             GNSS_PARSER_ParseMsg(&GNSSParser_Data, GNS);
             GNSS_PARSER_Print(&GNSSParser_Data, GNS);
+
+            //store the msg in the corresponding queue
+            if (!enqueue(GNS_queue, (void *) &GNSSParser_Data.gns_data)) {
+                //ERROR: the queue is full
+                printf("ERROR: the GNS queue is full\n");
+            }
         } else if (value & (1 << 0)) {  // First bit -> GPRMC
             GNSS_PARSER_ParseMsg(&GNSSParser_Data, GPRMC);
             GNSS_PARSER_Print(&GNSSParser_Data, GPRMC);
+
+            //store the msg in the corresponding queue
+            if (!enqueue(GPRMC_queue, (void *) &GNSSParser_Data.gprmc_data)) {
+                //ERROR: the queue is full
+                printf("ERROR: the GPRMC queue is full\n");
+            }
         }
 
         /* USER CODE END WHILE */
@@ -101,6 +130,10 @@ void task(void *args){
 }
 
 /* USER CODE BEGIN PF */     //Insert code if necessary
-    
+
+//free the queues
+freeQueue(GPGGA_queue);
+freeQueue(GNS_queue);
+freeQueue(GPRMC_queue);
 
 /* USER CODE END PF */
