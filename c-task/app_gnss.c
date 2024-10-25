@@ -81,6 +81,7 @@ void task(void *args){
         value = getValue();
         /* USER CODE BEGIN WHILE */     //Insert code if necessary
 
+        //Assuming a Little Endian representation, the bitwise operation is performed to the LSB down to the MSB
         if (value & (1 << 2)) {  // Third bit -> GPGGA
             GNSS_PARSER_ParseMsg(&GNSSParser_Data, GPGGA); //analysis of the message
             GNSS_PARSER_Print(&GNSSParser_Data, GPGGA); //print the message
